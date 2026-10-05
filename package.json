@@ -1,0 +1,17 @@
+{
+  "name": "exception-boundary-wrapper",
+  "version": "0.1.0",
+  "description": "Wraps a synchronous or asynchronous function so that any thrown error is caught and routed to a handler, returning a fallback value to the caller.",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": "./src/index.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "dependencies": {}
+}
