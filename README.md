@@ -27,3 +27,10 @@ The trade-off: you lose the ability to distinguish success from failure by contr
 - `onError` must not throw. If it does, the outer Promise rejects with that handler error rather than silently returning a second fallback. We deliberately do not invent a fallback for a failing error-handler — hiding it would mask a real bug.
 - The wrapper preserves `this` and `arguments` for the wrapped function, so it can be dropped in as a method.
 - Async-ness is duck-typed via `.then`, not `instanceof Promise`, so custom thenables and cross-realm Promises are handled uniformly. A sync task stays sync (returns a plain value), an async task stays awaitable.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
